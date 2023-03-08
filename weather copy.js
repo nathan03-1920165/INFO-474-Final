@@ -29,7 +29,7 @@ function onCategoryChanged() {
     } */
     
     // Update chart with the select city
-    updateChart(category)
+    updateChart(category, true, 4)
 }
 
 // recall that when data is loaded into memory, numbers are loaded as strings
@@ -64,6 +64,21 @@ svg.selectAll('.background')
     .enter()
     .append('rect') // Append a rectangle
     .attr('class', 'background')
+    .attr('width', trellisWidth) // Use our trellis dimensions
+    .attr('height', trellisHeight)
+    .attr('transform', function(d, i) {
+        // Position based on the matrix array indices.
+        // i = 1 for column 1, row 0)
+        var tx = (i % 3) * (trellisWidth + padding.l + padding.r) + padding.l;
+        var ty = Math.floor(i / 2) * (trellisHeight + padding.t + padding.b) + padding.t;
+        return 'translate('+[tx, ty]+')';
+    });
+
+barBackground = svg.selectAll('.xygrid')
+    .data(['A'])
+    .enter()
+    .append("rect")
+    .attr('class', 'xygrid')
     .attr('width', trellisWidth) // Use our trellis dimensions
     .attr('height', trellisHeight)
     .attr('transform', function(d, i) {
@@ -111,12 +126,12 @@ d3.csv("weather_sums.csv", dataPreprocessor).then(function(dataset) {
 
     // Filter data by city
     filteredCity = nested.filter(function(d) {
-        return d.key === "CLT";                         // what should I put here?
+        return d.key === "CLT";
     })
 
     // Append trellis groupings
-    var trellisG = svg.selectAll('.trellis')
-        .data(filteredCity)                                   // should I be using 'nested' here?
+    trellisG = svg.selectAll('.trellis')
+        .data(filteredCity)
         .enter()
         .append('g')
         .attr('class', 'trelis')
@@ -132,7 +147,7 @@ d3.csv("weather_sums.csv", dataPreprocessor).then(function(dataset) {
         .y(function(d) {return yScale(d.average_precipitation)})
 
     // Add color
-    var colorScale = d3.scaleOrdinal(d3.schemeCategory10).domain(nested.map(function(d) {
+    colorScale = d3.scaleOrdinal(d3.schemeCategory10).domain(nested.map(function(d) {
         return d.key;
     }))
 
@@ -148,7 +163,7 @@ d3.csv("weather_sums.csv", dataPreprocessor).then(function(dataset) {
         .tickSize(-trellisHeight, 0, 0)
         .tickFormat('');
 
-    trellisG.append('g')
+    barBackground.append('g')
         .attr('class', 'x grid')
         .call(xGrid)
 
@@ -156,20 +171,9 @@ d3.csv("weather_sums.csv", dataPreprocessor).then(function(dataset) {
         .tickSize(-trellisWidth, 0, 0)
         .tickFormat('')
 
-    trellisG.append('g')
+    barBackground.append('g')
         .attr('class', 'y grid')
         .call(yGrid)
-
-    // Append city labels
-    var cityLabel = trellisG.append('text')
-        .attr('class', 'city-label')
-        .attr('transform', "translate(" + (trellisWidth-355) + "," + (trellisHeight+45) + ")")
-        .attr('fill', function(d) {
-            return colorScale(d.key)
-        })
-        .text(function(d) {
-            return d.key;
-        })
 
     // Label the axes
     var xaxisLabels = trellisG.append('text')
@@ -187,6 +191,25 @@ d3.csv("weather_sums.csv", dataPreprocessor).then(function(dataset) {
 })
 
 function updateChart(categoryKey, sliderTF, sliderValue) {
+
+    // Global variable cityKey
+    cityKey = categoryKey
+
+    // Removes old 'rect' elements
+    d3.selectAll("svg .bar").remove()
+
+    // Removes old 'cityLabel' elements
+    d3.selectAll('svg .city-label').remove()
+
+    // Append city labels
+    var cityLabel = trellisG.append('text')
+        .attr('class', 'city-label')
+        .attr('transform', "translate(" + (trellisWidth-355) + "," + (trellisHeight+45) + ")")
+        .attr('fill', function(d) {
+            return colorScale(categoryKey)
+        })
+        .text(categoryKey)
+
     let precipitationData = filteredCity.map(function(group) {
         return {
             key: group.key,
@@ -226,7 +249,6 @@ function updateChart(categoryKey, sliderTF, sliderValue) {
 
     // Create the bar chart
     var bars = chartG.selectAll('.bar.rect')
-        //.data(filteredWeather[0].values, function(d) { //key function
         .data(filteredWeather[0].values, function(d) { //key function
             return d.date
         })
@@ -248,9 +270,12 @@ function updateChart(categoryKey, sliderTF, sliderValue) {
         .attr('height', function(d) {
             return chartHeight - yScale(d.average_precipitation)
         })
-        .attr("fill", d3.scaleOrdinal(d3.schemeCategory10).domain(nested.map(function(d) {
+        /* .attr("fill", d3.scaleOrdinal(d3.schemeCategory10).domain(nested.map(function(d) {
             return d.key;
-        })))
+        }))) */
+        .attr('fill', function(d) {
+            return colorScale(categoryKey)
+        })
 
     bars.exit().remove()
 }
@@ -258,7 +283,7 @@ function updateChart(categoryKey, sliderTF, sliderValue) {
 // Add slider functionality
 d3.select("#mySlider").on("input", function() {
     selectedValue = this.value;
-    updateChart('CLT', true, selectedValue);
+    updateChart(cityKey, true, selectedValue);
 
     // Update slider value text
     var sliderValueText = d3.select('#sliderValue');
