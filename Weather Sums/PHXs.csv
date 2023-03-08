@@ -1,0 +1,13 @@
+city,date,actual_precipitation,average_precipitation,record_precipitation
+PHX,Jan 2014,0.81,0.91,26.65
+PHX,Feb 2014,0.01,0.92,22.85
+PHX,Mar 2014,0.33,0.99,24.79
+PHX,Apr 2014,0.18,0.28,15.2
+PHX,May 2014,1.17,0.11,8.49
+PHX,Jun 2014,0.25,0.02,7.16
+PHX,Jul 2014,0.06,1.05,35.07
+PHX,Aug 2014,1.17,1,31.62
+PHX,Sep 2014,5.1,0.64,36.2
+PHX,Oct 2014,0.13,0.58,21.88
+PHX,Nov 2014,0,0.65,25.85
+PHX,Dec 2014,0.91,0.88,25.46

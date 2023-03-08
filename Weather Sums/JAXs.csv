@@ -1,0 +1,13 @@
+city,date,actual_precipitation,average_precipitation,record_precipitation
+JAX,Jan 2014,3.08,3.31,63.19
+JAX,Feb 2014,3.32,3.19,65.16
+JAX,Mar 2014,2.29,3.95,79.59
+JAX,Apr 2014,2.67,2.64,67.87
+JAX,May 2014,1.08,2.48,91.78
+JAX,Jun 2014,6.32,6.45,115.77
+JAX,Jul 2014,2.75,6.55,86.58
+JAX,Aug 2014,3.03,6.8,105.88
+JAX,Sep 2014,9.8,8.19,137.17
+JAX,Oct 2014,1.87,3.93,122.14
+JAX,Nov 2014,3.96,2.11,54.71
+JAX,Dec 2014,3.74,2.8,70.84
