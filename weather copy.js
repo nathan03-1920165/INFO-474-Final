@@ -229,17 +229,24 @@ function updateChart(categoryKey, sliderTF, sliderValue) {
         })
 
         // Create a filtered array of weather data based on sliderValue
+        /*
         var filteredData = []
         for (let i = 0; i < filteredCity[0].values.length; i++) {
             if (filteredCity[0].values[i].average_precipitation < sliderValue) {
                 filteredData.push(filteredCity[0].values[i])
             }
         }
+        var filteredWeather = [{key: categoryKey, values: filteredData}] */
+
+        var filteredValues = filteredCity[0].values
+        var filteredData = filteredValues.filter(function(d) {
+            return d.average_precipitation < sliderValue;
+        })
         var filteredWeather = [{key: categoryKey, values: filteredData}]
     } else {
         // Create a filtered array of weather data based on the categoryKey
-        var filteredWeather = nested.filter(function(d){
-            return d.key === categoryKey;
+        var filteredWeather = nested.filter(function(d) {
+            return d.key === categoryKey; 
         });
     }
 
