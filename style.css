@@ -4,7 +4,7 @@
     stroke: #333;
 }
 
-.city-label {
+.city-label1, .city-label2, .city-label3, .city-label4 {
     text-anchor: middle;
     font-size: 20px;
     font-weight: semibold;

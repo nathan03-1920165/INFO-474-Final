@@ -14,7 +14,7 @@
         </p>
         <div id="drop1" style="display: inline; margin-right: 185px">
             <label for="categorySelect">City 1: </label>
-            <select class="dropdown" id="dropdown1" onchange="onCategoryChanged()">
+            <select class="dropdown" id="dropdown1" onchange="onCategoryChanged1()">
                 <option selected value="CLT">Charlotte, North Carolina</option>
                 <option value="CQT">Los Angeles, California</option>
                 <option value="IND">Indianapolis, Indiana</option>
@@ -29,7 +29,7 @@
         </div>
         <div id="drop2" style="display: inline">
             <label for="categorySelect">City 2: </label>
-            <select class="dropdown" id="dropdown2" onchange="onCategoryChanged()">
+            <select class="dropdown" id="dropdown2" onchange="onCategoryChanged2()">
                 <option value="charlotte">Charlotte, North Carolina</option>
                 <option selected value="losangeles">Los Angeles, California</option>
                 <option value="indianapolis">Indianapolis, Indiana</option>
@@ -48,7 +48,7 @@
         <br>
         <div id="drop3" style="display: inline; margin-right: 185px">
             <label for="categorySelect">City 3: </label>
-            <select class="dropdown" id="dropdown3" onchange="onCategoryChanged()">
+            <select class="dropdown" id="dropdown3" onchange="onCategoryChanged3()">
                 <option value="charlotte">Charlotte, North Carolina</option>
                 <option value="losangeles">Los Angeles, California</option>
                 <option value="indianapolis">Indianapolis, Indiana</option>
@@ -63,17 +63,17 @@
         </div>
         <div id="drop4" style="display: inline">
             <label for="categorySelect">City 4: </label>
-            <select class="dropdown" id="dropdown4" onchange="onCategoryChanged()">
+            <select class="dropdown" id="dropdown4" onchange="onCategoryChanged4()">
                 <option value="charlotte">Charlotte, North Carolina</option>
                 <option value="losangeles">Los Angeles, California</option>
                 <option value="indianapolis">Indianapolis, Indiana</option>
                 <option value="jacksonville">Jacksonville, Florida</option>
                 <option value="chicago">Chicago, Illinois</option>
                 <option value="philadelphia">Philadelphia, Pennsylvania</option>
-                <option value="phoenix">Phoenix, Arizona</option>
+                <option selected value="phoenix">Phoenix, Arizona</option>
                 <option value="houston">Houston, Texas</option>
                 <option value="newyork">New York, New York</option>
-                <option selected value="seattle">Seattle, Washington</option>
+                <option value="seattle">Seattle, Washington</option>
             </select>
         </div>
         <br>
@@ -81,8 +81,8 @@
         <svg id="plot4" width="430" height="300" style="border: 1px solid #777;"></svg>
     
         <div>
-            <div id="sliderValue">Precipitation < 4 in.</div>
-            <input type="range" name="mySlider" id=mySlider min="0" max="10" value="4" step="0.5">
+            <div id="sliderValue">Actual Precipitation < 0 in.</div>
+            <input type="range" name="mySlider" id=mySlider min="0" max="16" value="0" step="0.5">
         </div>
     </div>
 </body>
