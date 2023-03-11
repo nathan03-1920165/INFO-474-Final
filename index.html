@@ -9,7 +9,7 @@
 <body>
     <div id="main">
         <h1>Average Record Precipitation by Month</h1>
-        <p width="680">Graphical representation of average record precipitation for multiple U.S. cities.
+        <p width="680">Graphical representation of average record rainfall for multiple U.S. cities with slider of average actual rainfall.
             Source: <a href="https://www.wunderground.com/" target="_blank">Wunderground</a>
         </p>
         <div id="drop1" style="display: inline; margin-right: 185px">
@@ -30,16 +30,16 @@
         <div id="drop2" style="display: inline">
             <label for="categorySelect">City 2: </label>
             <select class="dropdown" id="dropdown2" onchange="onCategoryChanged2()">
-                <option value="charlotte">Charlotte, North Carolina</option>
-                <option selected value="losangeles">Los Angeles, California</option>
-                <option value="indianapolis">Indianapolis, Indiana</option>
-                <option value="jacksonville">Jacksonville, Florida</option>
-                <option value="chicago">Chicago, Illinois</option>
-                <option value="philadelphia">Philadelphia, Pennsylvania</option>
-                <option value="phoenix">Phoenix, Arizona</option>
-                <option value="houston">Houston, Texas</option>
-                <option value="newyork">New York, New York</option>
-                <option value="seattle">Seattle, Washington</option>
+                <option value="CLT">Charlotte, North Carolina</option>
+                <option selected value="CQT">Los Angeles, California</option>
+                <option value="IND">Indianapolis, Indiana</option>
+                <option value="JAX">Jacksonville, Florida</option>
+                <option value="MDW">Chicago, Illinois</option>
+                <option value="PHL">Philadelphia, Pennsylvania</option>
+                <option value="PHX">Phoenix, Arizona</option>
+                <option value="KHOU">Houston, Texas</option>
+                <option value="KNYC">New York, New York</option>
+                <option value="KSEA">Seattle, Washington</option>
             </select>
         </div>
         <br>
@@ -49,31 +49,31 @@
         <div id="drop3" style="display: inline; margin-right: 185px">
             <label for="categorySelect">City 3: </label>
             <select class="dropdown" id="dropdown3" onchange="onCategoryChanged3()">
-                <option value="charlotte">Charlotte, North Carolina</option>
-                <option value="losangeles">Los Angeles, California</option>
-                <option value="indianapolis">Indianapolis, Indiana</option>
-                <option value="jacksonville">Jacksonville, Florida</option>
-                <option selected value="chicago">Chicago, Illinois</option>
-                <option value="philadelphia">Philadelphia, Pennsylvania</option>
-                <option value="phoenix">Phoenix, Arizona</option>
-                <option value="houston">Houston, Texas</option>
-                <option value="newyork">New York, New York</option>
-                <option value="seattle">Seattle, Washington</option>
+                <option value="CLT">Charlotte, North Carolina</option>
+                <option value="CQT">Los Angeles, California</option>
+                <option value="IND">Indianapolis, Indiana</option>
+                <option value="JAX">Jacksonville, Florida</option>
+                <option selected value="MDW">Chicago, Illinois</option>
+                <option value="PHL">Philadelphia, Pennsylvania</option>
+                <option value="PHX">Phoenix, Arizona</option>
+                <option value="KHOU">Houston, Texas</option>
+                <option value="KNYC">New York, New York</option>
+                <option value="KSEA">Seattle, Washington</option>
             </select>
         </div>
         <div id="drop4" style="display: inline">
             <label for="categorySelect">City 4: </label>
             <select class="dropdown" id="dropdown4" onchange="onCategoryChanged4()">
-                <option value="charlotte">Charlotte, North Carolina</option>
-                <option value="losangeles">Los Angeles, California</option>
-                <option value="indianapolis">Indianapolis, Indiana</option>
-                <option value="jacksonville">Jacksonville, Florida</option>
-                <option value="chicago">Chicago, Illinois</option>
-                <option value="philadelphia">Philadelphia, Pennsylvania</option>
-                <option selected value="phoenix">Phoenix, Arizona</option>
-                <option value="houston">Houston, Texas</option>
-                <option value="newyork">New York, New York</option>
-                <option value="seattle">Seattle, Washington</option>
+                <option value="CLT">Charlotte, North Carolina</option>
+                <option value="CQT">Los Angeles, California</option>
+                <option value="IND">Indianapolis, Indiana</option>
+                <option value="JAX">Jacksonville, Florida</option>
+                <option value="MDW">Chicago, Illinois</option>
+                <option value="PHL">Philadelphia, Pennsylvania</option>
+                <option selected value="PHX">Phoenix, Arizona</option>
+                <option value="KHOU">Houston, Texas</option>
+                <option value="KNYC">New York, New York</option>
+                <option value="KSEA">Seattle, Washington</option>
             </select>
         </div>
         <br>
@@ -81,7 +81,7 @@
         <svg id="plot4" width="430" height="300" style="border: 1px solid #777;"></svg>
     
         <div>
-            <div id="sliderValue">Actual Precipitation < 0 in.</div>
+            <b><div id="sliderValue">Actual Precipitation < 0 in.</div></b>
             <input type="range" name="mySlider" id=mySlider min="0" max="16" value="0" step="0.5">
         </div>
     </div>
@@ -90,5 +90,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <script src="https://d3js.org/d3.v5.min.js"></script>
-<script src="./weather copy.js"></script>
+<script src="https://unpkg.com/d3-v6-tip@1.0.6/build/d3-v6-tip.js"></script>
+<script src="./weather.js"></script>
 </html>
