@@ -612,8 +612,8 @@ function updateChart2(categoryKey, sliderValue) {
         })
 
     // Invoke the tip in the context of your visualization
-    svg1.call(tip2a)
-    svg1.call(tip2b)
+    svg2.call(tip2a)
+    svg2.call(tip2b)
 
     // Create the bar chart
     var bars = chartG2.selectAll('.bar2.rect')
@@ -624,7 +624,7 @@ function updateChart2(categoryKey, sliderValue) {
     // Append new bars
     var barsEnter = bars.enter()
         .append('g')
-        .attr('class', 'bar')
+        .attr('class', 'bar2')
 
     barsEnter.merge(bars)
         .attr('transform', function(d, i) {
@@ -854,8 +854,8 @@ function updateChart4(categoryKey, sliderValue) {
         })
 
     // Invoke the tip in the context of your visualization
-    svg1.call(tip4a)
-    svg1.call(tip4b)
+    svg4.call(tip4a)
+    svg4.call(tip4b)
 
     // Create the bar chart
     var bars = chartG4.selectAll('.bar4.rect')
@@ -866,7 +866,7 @@ function updateChart4(categoryKey, sliderValue) {
     // Append new bars
     var barsEnter = bars.enter()
         .append('g')
-        .attr('class', 'bar')
+        .attr('class', 'bar4')
 
     barsEnter.merge(bars)
         .attr('transform', function(d, i) {
